@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enigma</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<style>
+    body {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('fbg.gif');
+        z-index: -1;
+
+
+        /* background-size: cover; */
+        /* background-repeat: no-repeat; */
+    }
+
+    .headinge img {
+        display: flex;
+        margin: 0 auto;
+        height: 40vh;
+    }
+
+    .buttone button {
+        width: 247px;
+        height: 122px;
+        flex-shrink: 0;
+        border-radius: 39px;
+        background: linear-gradient(180deg, #D88E00 0%, #A90000 100%);
+        box-shadow: 0px 4px 13px 0px rgba(0, 0, 0, 0.74);
+        border: 0;
+        color: #FFF;
+        font-family: "Jolly Lodger";
+        font-size: 100px;
+        font-style: normal;
+        font-weight: 400;
+        display: flex;
+        margin: 2% auto;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .iconse {
+        align-items: center;
+        padding: 0 0%;
+        cursor: pointer;
+        position: fixed;
+        right: 0;
+        /* Move the element to the right edge of the screen */
+    }
+
+
+        .iconse button {
+    display: flex;
+    /* margin: 10% 0; */
+    width: 100px;
+    }
+
+
+    .pnamesouter {
+        max-width: max-content;
+        overflow: hidden;
+        border-radius: 10px;
+        padding: 20px;
+
+    }
+
+    .pnamesoutermore {
+        background: linear-gradient(180deg, #D88E00 0%, #A90000 100%);
+        box-shadow: 0px 4px 13px 0px rgba(0, 0, 0, 0.74);
+        border-radius: 10px;
+        padding: 1%;
+
+    }
+
+    .pnames {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2%;
+    }
+
+    .pnames input {
+        padding: 2%;
+        border: 0;
+        background-color: #a9000000;
+        color: #FFF;
+        font-family: "Jolly Lodger";
+        font-size: 1.5rem;
+        border: 1px solid rgb(255, 255, 255);
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+
+    }
+
+    ::placeholder {
+        color: #FFF;
+        font-family: "Jolly Lodger";
+        font-size: 1.5rem;
+        opacity: 70%;
+    }
+
+    textarea:focus,
+    input:focus {
+        outline: none;
+    }
+
+    .entername {
+        color: #FFF;
+        font-family: "Jolly Lodger";
+        font-size: 1.3rem;
+        text-align: center;
+        margin: 0;
+    }
+
+    .controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #playername1,
+    #playername2 {
+        color: #FFF;
+        font-family: "Jolly Lodger";
+        font-size: 2rem;
+        text-align: center;
+
+    }
+
+    .popupouter {
+        font-family: "Jolly Lodger";
+        text-align: center;
+        text-decoration: underline;
+        background-color: #FFA800;
+        border-radius: 20px;
+        overflow: hidden;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        z-index: 999;
+    }
+
+    .popup {
+        display: none;
+    }
+
+    .popup img {
+        height: 80vh;
+
+    }
+
+    button {
+        background-color: rgba(255, 0, 0, 0);
+        border: none;
+    }
+
+    #newIcon {
+        display: none;
+    }
+
+    .popupouter button {
+        background-color: antiquewhite;
+        border-radius: 10px;
+        color: #ff0000;
+        font-size: 1.2rem;
+        font-family: "Jolly Lodger";
+        box-shadow: 2px 2px 10px black;
+        border: 0;
+        margin-left: 90%;
+    }
+
+    .highscores {
+        font-size: 1rem;
+        font-family: "Jolly Lodger";
+        height: max-content;
+        text-align: center;
+        width: 300px;
+        margin: 2%;
+        position: fixed;
+        background-color: #D88E00;
+        flex-wrap: wrap;
+    }
+
+    .highscores h1 {
+        margin: 0;
+        padding: 2px;
+        color: white;
+    }
+
+    .highscores ol {
+        text-transform: uppercase;
+        text-align: left;
+        font-size: 2rem;
+    }
+
+    #highScoresHeader {
+        cursor: pointer;
+    }
+</style>
+
+
+<body>
+
+    <div class="highscores">
+        <h1 id="highScoresHeader">Winners & HighScores</h1>
+
+        <ol id="highscoresList" style="display: none;">
+           
+        </ol>
+
+        <HighScores></HighScores>
+        <hr>
+    </div>
+
+    <div class="iconse">
+        <button class="instructionsicon" onclick="openinstruc()">
+            <svg id="insicon" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"
+                fill="none">
+                <rect width="120" height="120" rx="51" fill="url(#paint0_linear_5_44)" />
+                <mask id="mask0_5_44" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="10" y="10" width="100"
+                    height="100">
+                    <rect x="10" y="10" width="100" height="100" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_5_44)">
+                    <path
+                        d="M39.1667 80.8333H68.3333V72.5H39.1667V80.8333ZM39.1667 64.1667H80.8333V55.8333H39.1667V64.1667ZM39.1667 47.5H80.8333V39.1667H39.1667V47.5ZM30.8333 97.5C28.5417 97.5 26.5799 96.684 24.9479 95.0521C23.316 93.4201 22.5 91.4583 22.5 89.1667V30.8333C22.5 28.5417 23.316 26.5799 24.9479 24.9479C26.5799 23.316 28.5417 22.5 30.8333 22.5H89.1667C91.4583 22.5 93.4201 23.316 95.0521 24.9479C96.684 26.5799 97.5 28.5417 97.5 30.8333V89.1667C97.5 91.4583 96.684 93.4201 95.0521 95.0521C93.4201 96.684 91.4583 97.5 89.1667 97.5H30.8333ZM30.8333 89.1667H89.1667V30.8333H30.8333V89.1667Z"
+                        fill="white" />
+                </g>
+                <defs>
+                    <linearGradient id="paint0_linear_5_44" x1="60" y1="0" x2="60" y2="120"
+                        gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#EBB800" />
+                        <stop offset="1" stop-color="#D52600" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </button>
+
+
+
+
+        <button class="soundicon" onclick="toggleSound()">
+            <svg id="originalIcon" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"
+                fill="none">
+                <rect width="120" height="120" rx="51" fill="url(#paint0_linear_5_38)" />
+                <mask id="mask0_5_38" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="10" y="10" width="100"
+                    height="100">
+                    <rect x="10" y="10" width="100" height="100" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_5_38)">
+                    <path
+                        d="M70.7563 95.7306C69.5246 96.0873 68.3333 95.1339 68.3333 93.8517V89.3159C68.3333 88.4252 68.9252 87.648 69.7684 87.3608C75.3585 85.4566 79.9149 82.1348 83.4375 77.3953C87.2569 72.2564 89.1667 66.423 89.1667 59.8953C89.1667 53.3675 87.2569 47.5341 83.4375 42.3952C79.9149 37.6557 75.3585 34.3339 69.7684 32.4297C68.9252 32.1425 68.3333 31.3653 68.3333 30.4746V25.9389C68.3333 24.6566 69.5246 23.7032 70.7563 24.0599C78.2693 26.2355 84.4755 30.3855 89.375 36.5098C94.7917 43.2807 97.5 51.0758 97.5 59.8953C97.5 68.7147 94.7917 76.5099 89.375 83.2807C84.4755 89.405 78.2693 93.555 70.7563 95.7306ZM24.5 72.4994C23.3954 72.4994 22.5 71.604 22.5 70.4994V49.4994C22.5 48.3948 23.3954 47.4994 24.5 47.4994H38.3382C38.8687 47.4994 39.3774 47.2887 39.7525 46.9136L56.5858 30.0803C57.8457 28.8203 60 29.7127 60 31.4945V88.5044C60 90.2862 57.8457 91.1785 56.5858 89.9186L39.7525 73.0852C39.3774 72.7101 38.8687 72.4994 38.3382 72.4994H24.5ZM71.0581 75.1038C69.8553 75.939 68.3333 74.9859 68.3333 73.5217V46.2688C68.3333 44.8046 69.8553 43.852 71.0561 44.6899C73.052 46.0826 74.6965 47.8524 75.9896 49.9994C77.8299 53.055 78.75 56.3883 78.75 59.9994C78.75 63.5411 77.8299 66.8223 75.9896 69.8432C74.6969 71.9651 73.0531 73.7186 71.0581 75.1038ZM51.6667 51.7028C51.6667 49.921 49.5124 49.0287 48.2525 50.2886L43.2941 55.247C42.919 55.622 42.4103 55.8328 41.8799 55.8328H32.8333C31.7288 55.8328 30.8333 56.7282 30.8333 57.8328V62.1661C30.8333 63.2707 31.7288 64.1661 32.8333 64.1661H41.8799C42.4103 64.1661 42.919 64.3768 43.2941 64.7519L48.2525 69.7102C49.5124 70.9701 51.6667 70.0778 51.6667 68.296V51.7028Z"
+                        fill="white" />
+                </g>
+                <defs>
+                    <linearGradient id="paint0_linear_5_38" x1="60" y1="0" x2="60" y2="120"
+                        gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#EBB800" />
+                        <stop offset="1" stop-color="#D52600" />
+                    </linearGradient>
+                </defs>
+            </svg>
+
+
+
+
+            <svg id="newIcon" xmlns="http://www.w3.org/2000/svg" width="124" height="120" viewBox="0 0 124 120"
+                fill="none">
+                <rect x="4" width="120" height="120" rx="51" fill="url(#paint0_linear_142_39)" />
+                <mask id="mask0_142_39" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="10" width="100"
+                    height="100">
+                    <rect y="10" width="100" height="100" rx="2" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_142_39)">
+                    <path
+                        d="M31.1667 72.5C30.0621 72.5 29.1667 71.6046 29.1667 70.5V49.5C29.1667 48.3954 30.0621 47.5 31.1667 47.5H45.0049C45.5354 47.5 46.0441 47.2893 46.4191 46.9142L63.2525 30.0809C64.5124 28.821 66.6667 29.7133 66.6667 31.4951V88.5049C66.6667 90.2867 64.5124 91.1791 63.2525 89.9191L46.4191 73.0858C46.0441 72.7107 45.5354 72.5 45.0049 72.5H31.1667ZM37.5 62.1667C37.5 63.2713 38.3955 64.1667 39.5 64.1667H48.5466C49.077 64.1667 49.5857 64.3774 49.9608 64.7525L54.9191 69.7108C56.1791 70.9707 58.3334 70.0784 58.3334 68.2966V51.7034C58.3334 49.9216 56.1791 49.0293 54.9191 50.2892L49.9608 55.2476C49.5857 55.6226 49.077 55.8334 48.5466 55.8334H39.5C38.3955 55.8334 37.5 56.7288 37.5 57.8334V62.1667Z"
+                        fill="white" />
+                </g>
+                <defs>
+                    <linearGradient id="paint0_linear_142_39" x1="64" y1="0" x2="64" y2="120"
+                        gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#EBB800" />
+                        <stop offset="1" stop-color="#D52600" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </button>
+
+
+    </div>
+
+    <audio id="backgroundMusic" src="gsame.mp3" autoplay loop></audio>
+
+    <div class="popup">
+        <div class="popupouter">
+            <button id="closepopup" onclick="openinstruc()">Close</button>
+            <h1>INSTRUCTIONS</h1>
+            <img src="instructions.png" />
+        </div>
+    </div>
+    </div>
+    <div class="headinge">
+        <img src="Enigma.png"></img>
+    </div>
+
+    <div class="buttone">
+        <button onclick="start()">Start</button>
+
+    </div>
+    <div class="controls" ng-app="">
+        <div>
+            <img src="wasd.png">
+            <p id="playername1" ng-bind="name1 || 'Player 1'">Player 1</p>
+
+        </div>
+
+
+        <div class="pnamesoutermore">
+            <div class="pnamesouter">
+                <div class="pnames">
+                    <input id="name2" type="text" placeholder="Enter player 1 name" ng-model="name1">
+                    <input id="name1" type="text" placeholder="Enter player 2 name" ng-model="name2">
+
+                </div>
+            </div>
+            <p class="entername"></p>
+        </div>
+        <div>
+            <img src="arrow.png">
+            <p id="playername2" ng-bind="name2 || 'Player 2'">Player 2</p>
+        </div>
+    </div>
+
+
+
+    <script src="/indexx.js"></script>
+
+
+
+
+</body>
+
+</html>
