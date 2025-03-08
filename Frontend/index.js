@@ -29,7 +29,7 @@ function start() {
         name2 = 'Player 2';
     }
     else {
-        window.location.href = 'new.html';
+        window.location.href = 'playing.html';
     }
 
     document.getElementById('playername1').innerText = name1;

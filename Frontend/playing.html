@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="playing.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maze Game</title>
+</head>
+
+<body>
+
+    <div class="background"></div>
+    <div class="heading">
+        <img src="../Media/Enigma.png"></img>
+        <div class="pointsncoins">
+            <div id="points">
+
+                <div class="pointswrap">
+                    <p id="p2point">Player 2: 0 points</p>
+                    <div id="p2scoins">
+
+                        <div id="p2gcoins">
+                            hi
+                        </div>
+                        <div id="p2bcoins">
+                            hi
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pointswrap">
+                    <p id="p1point">Player 1: 0 points</p>
+                    <div id="p1scoins">
+                        <div id="p1gcoins">
+                            hi
+                        </div>
+                        <div id="p1bcoins">
+                            hi
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h1 id="timer"></h1>
+
+    </div>
+
+
+    <div class="winnerouter">
+        <div class="winner">
+            <h2>WINNER</h2>
+            <div class="starsimg">
+                <img src="../Media/stars.png" />
+            </div>
+            <div class="winnerimg"></div>
+            <h1 id="winname">Name</h2>
+                <h2>Score</h2>
+
+                <button onclick="ree()" class="restart">Restart</button>
+        </div>
+    </div>
+
+
+    <canvas id="mazeCanvas"></canvas>
+    <script src="./playing.js"></script>
+
+</body>
+
+</html>

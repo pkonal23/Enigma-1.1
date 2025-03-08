@@ -183,14 +183,14 @@ image.onload = function () {
     console.log('Image 1 loaded successfully.');
     drawGame(); // Draw the game once the image is loaded
 };
-image.src = 'fplanet1.png'; // Replace 'planet1final.png' with the correct path to your image file
+image.src = '../Media/fplanet1.png'; // Replace 'planet1final.png' with the correct path to your image file
 
 const image2 = new Image();
 image2.onload = function () {
     console.log('Image 2 loaded successfully.');
     drawGame(); // Draw the game once the image is loaded
 };
-image2.src = 'fplanet2.png'; // Replace 'planet2final.png' with the correct path to your second image file
+image2.src = '../Media/fplanet2.png'; // Replace 'planet2final.png' with the correct path to your second image file
 // Function to draw the game
 function drawGame() {
     const canvas = document.getElementById('mazeCanvas');
@@ -416,24 +416,24 @@ function endGame() {
     let winnerScore = 0;
 
     if (finalpoints1 > finalpoints2) {
-        winnerImageHTML = '<div class="winnerimg"><img src="win1.gif"></div>';
+        winnerImageHTML = '<div class="winnerimg"><img src="../Media/win1.gif"></div>';
         winnerName = localStorage.getItem('name1');
         winnerScore = finalpoints1;
     } else if (imageHeight === 0) {
-        winnerImageHTML = '<div class="winnerimg"><img src="win2.gif"></div>';
+        winnerImageHTML = '<div class="winnerimg"><img src="../Media/win2.gif"></div>';
         winnerName = localStorage.getItem('name2');
         winnerScore = finalpoints2;
         gameRunning = false;
     }
     else if (imageHeight2 === 0) {
-        winnerImageHTML = '<div class="winnerimg"><img src="win1.gif"></div>';
+        winnerImageHTML = '<div class="winnerimg"><img src="../Media/win1.gif"></div>';
         winnerName = localStorage.getItem('name1');
         winnerScore = finalpoints1;
         gameRunning = false;
 
     }
     else {
-        winnerImageHTML = '<div class="winnerimg"><img src="win2.gif"></div>';
+        winnerImageHTML = '<div class="winnerimg"><img src="../Media/win2.gif"></div>';
         winnerName = localStorage.getItem('name2');
         winnerScore = finalpoints2;
     }
