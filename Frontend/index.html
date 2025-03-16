@@ -11,6 +11,22 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <link rel="icon" type="image/x-icon" href="/Media/favicon.ico">
+    <script>
+        let enterEnabled = false; // Flag to check if Enter should be enabled
+    
+        function enableEnter() {
+            startAI(); // Call the function when the button is clicked
+            enterEnabled = true; // Enable Enter key functionality after clicking once
+            console.log("Enabled!");
+        }
+    
+        document.addEventListener("keydown", function(event) {
+            if (enterEnabled && event.key === "Enter") {
+                startAI();
+            }
+        });
+    
+    </script>
 </head>
 <body>
 
@@ -124,7 +140,7 @@
     
     
     <div class="buttonee">
-        <button onclick="startAI()">Play with AI</button>
+        <button onclick="enableEnter()">Play with AI</button>
         <p>OR</p>
     </div>
 
@@ -132,7 +148,6 @@
         <button onclick="start()">Start</button>
         <p>(enter player names below)</p>
         <br>
-     
     </div>
 
     <div class="controls" ng-app="">
@@ -164,3 +179,4 @@
     <script src="./index.js"></script>
 </body>
 </html>
+

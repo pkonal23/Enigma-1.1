@@ -47,10 +47,11 @@ function start() {
     else {
 
         document.body.innerHTML += `<div id="loading" class="loading">Starting Game...</div>`;
+        updateMessage();
 
         setTimeout(() => {
             window.location.href = 'playing.html';
-        }, 3500);
+        }, 4000);
 
 
 
@@ -59,6 +60,22 @@ function start() {
     document.getElementById('playername1').innerText = name1;
     document.getElementById('playername2').innerText = name2;
 }
+
+
+
+const messages = ["Hold on...", "Setting up things...", "Starting game..."];
+let index = 0;
+
+function updateMessage() {
+    if (index < messages.length) {
+        document.getElementById("loading").innerText = messages[index];
+        index++;
+        setTimeout(updateMessage, 1500); // Change text every 3 seconds
+    }
+}
+
+
+
 
 function startAI() {
     const aiNames = ["Neo", "Titan", "Eclipse", "Zenith", "Quantum", "Nimbus", "Spectre", "Aegis", "Orion", "Echo"];
@@ -85,12 +102,19 @@ function startAI() {
     }
 
     // Show loading animation
+
     document.body.innerHTML += `<div id="loading" class="loading">Starting Game...</div>`;
+    updateMessage();
 
     setTimeout(() => {
         window.location.href = 'playingAI.html';
-    }, 3500);
+    }, 4000);
 
+
+
+
+
+    
     document.getElementById('playername1').innerText = name2;
     document.getElementById('playername2').innerText = name1;
 }
