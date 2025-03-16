@@ -10,11 +10,12 @@
     <title>Enigma</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="/Media/favicon.ico">
 </head>
 <body>
 
     <div class="highscores">
-        <h1 id="highScoresHeader">Winners & HighScores</h1>
+        <h1 id="highScoresHeader">Winners & HighScores ⌄</h1>
 
         <ol id="highscoresList" style="display: none;">
 
@@ -101,7 +102,7 @@
 
     </div>
 
-    <audio id="backgroundMusic" src="../Media/gsame.mp3" autoplay loop></audio>
+    <audio id="backgroundMusic" src="../Media/gsame.mp3" loop></audio>
 
     <div class="popup">
         <div class="popupouter">
@@ -117,8 +118,17 @@
 
     <div class="buttone">
         <button onclick="start()">Start</button>
-
+        <p>(enter player names below)</p>
+        <br>
+        <p>OR</p>
     </div>
+
+
+    <div class="buttonee">
+        <button onclick="startAI()">Play with AI</button>
+    
+    </div>
+
     <div class="controls" ng-app="">
         <div>
             <img src="../Media/wasd.png">

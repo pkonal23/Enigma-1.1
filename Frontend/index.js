@@ -1,4 +1,20 @@
 document.addEventListener('DOMContentLoaded', function () {
+
+
+
+      // Detect if the user is on a phone or tablet
+    function isMobileOrTablet() {
+        return /Mobi|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent) || 
+               (window.matchMedia && window.matchMedia("(max-width: 1024px)").matches);
+    }
+
+    if (isMobileOrTablet()) {
+        window.location.href = 'sorryDevice.html';
+        return;
+    }
+
+
+    
     const highScoresHeader = document.getElementById('highScoresHeader');
     const highScoresList = document.getElementById('highscoresList');
 
@@ -29,12 +45,45 @@ function start() {
         name2 = 'Player 2';
     }
     else {
-        window.location.href = 'playing.html';
+
+        document.body.innerHTML += `<div id="loading" class="loading">Starting Game...</div>`;
+
+        setTimeout(() => { 
+            window.location.href = 'playing.html';
+        }, 3500);
+
+        
+
     }
 
     document.getElementById('playername1').innerText = name1;
     document.getElementById('playername2').innerText = name2;
 }
+
+function startAI() {
+    let name1 = 'AI';
+    let name2 = 'You';
+
+    localStorage.setItem('name1', name1);
+    localStorage.setItem('name2', name2);
+
+    if (!name1 || !name2) {
+        document.querySelector('.entername').innerHTML = "<p class='entername'>!Enter names to start</p>";
+        name1 = 'AI';
+        name2 = 'You';
+    } else {
+        // Show loading animation
+        document.body.innerHTML += `<div id="loading" class="loading">Starting Game...</div>`;
+
+        setTimeout(() => {
+            window.location.href = 'playingAI.html';
+        }, 3500);
+    }
+
+    document.getElementById('playername1').innerText = name1;
+    document.getElementById('playername2').innerText = name2;
+}
+
 
 
 function toggleSound() {

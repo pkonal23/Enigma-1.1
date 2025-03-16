@@ -131,7 +131,7 @@ function generateMaze() {
 // Function to generate random coins one by one on empty cells of the maze
 function startCoinGeneration() {
     // Set interval to generate coins
-    setInterval(generateRandomCoins, 30); // Adjust the interval as needed (5000 milliseconds = 5 seconds)
+    setInterval(generateRandomCoins, 20); // Adjust the interval as needed (5000 milliseconds = 5 seconds)
 }
 
 let goodCoins = [];
