@@ -1,10 +1,13 @@
 let hasReachedExit = false; // Flag to track if the AI has reached the maze exit
 function ree() {
+    window.location.href = 'playingAI.html';
+}
+function reehome() {
     window.location.href = 'index.html';
 }
 
-var name1 = localStorage.getItem('name2').toUpperCase();
-var name2 = localStorage.getItem('name1').toUpperCase();
+var name2 = localStorage.getItem('name2').toUpperCase();
+var name1 = localStorage.getItem('name1').toUpperCase();
 
 document.getElementById('p1point').textContent = (name1 ? name1 + ': 100 points' : 'Player 2: 100 points');
 document.getElementById('p2point').textContent = (name2 ? name2 + ': 100 points' : 'Player 1: 100 points');
@@ -140,7 +143,7 @@ function generateMaze() {
 // Function to generate random coins one by one on empty cells of the maze
 function startCoinGeneration() {
     // Set interval to generate coins
-    setInterval(generateRandomCoins, 20); // Adjust the interval as needed (5000 milliseconds = 5 seconds)
+    setInterval(generateRandomCoins, 15); // Adjust the interval as needed (5000 milliseconds = 5 seconds)
 }
 
 let goodCoins = [];
@@ -450,24 +453,24 @@ function endGame() {
 
     if (finalpoints1 > finalpoints2) {
         winnerImageHTML = '<div class="winnerimg"><img src="../Media/win1.gif"></div>';
-        winnerName = localStorage.getItem('name2');
+        winnerName = localStorage.getItem('name1');
         winnerScore = finalpoints1;
     } else if (imageHeight === 0) {
         winnerImageHTML = '<div class="winnerimg"><img src="../Media/win2.gif"></div>';
-        winnerName = localStorage.getItem('name1');
+        winnerName = localStorage.getItem('name2');
         winnerScore = finalpoints2;
         gameRunning = false;
     }
     else if (imageHeight2 === 0) {
         winnerImageHTML = '<div class="winnerimg"><img src="../Media/win1.gif"></div>';
-        winnerName = localStorage.getItem('name2');
+        winnerName = localStorage.getItem('name1');
         winnerScore = finalpoints1;
         gameRunning = false;
 
     }
     else {
         winnerImageHTML = '<div class="winnerimg"><img src="../Media/win2.gif"></div>';
-        winnerName = localStorage.getItem('name1');
+        winnerName = localStorage.getItem('name2');
         winnerScore = finalpoints2;
     }
 

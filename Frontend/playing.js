@@ -1,6 +1,9 @@
 function ree() {
     window.location.href = 'index.html';
 }
+function reehome() {
+    window.location.href = 'index.html';
+}
 
 var name1 = localStorage.getItem('name1').toUpperCase();
 var name2 = localStorage.getItem('name2').toUpperCase();
@@ -131,7 +134,7 @@ function generateMaze() {
 // Function to generate random coins one by one on empty cells of the maze
 function startCoinGeneration() {
     // Set interval to generate coins
-    setInterval(generateRandomCoins, 20); // Adjust the interval as needed (5000 milliseconds = 5 seconds)
+    setInterval(generateRandomCoins, 15); // Adjust the interval as needed (5000 milliseconds = 5 seconds)
 }
 
 let goodCoins = [];

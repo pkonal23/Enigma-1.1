@@ -15,9 +15,14 @@
 <body>
 
     <div class="highscores">
-        <h1 id="highScoresHeader">Winners & HighScores ⌄</h1>
+        <div class="highscoresouter">
 
-        <ol id="highscoresList" style="display: none;">
+            <h1 id="highScoresHeader">Winners & HighScores 
+                <img src="../Media/dropdown.png"></img>
+            </h1>
+        </div>
+            
+            <ol id="highscoresList" style="display: none;">
 
         </ol>
 
@@ -116,17 +121,18 @@
         <img src="../Media/Enigma.png"></img>
     </div>
 
+    
+    
+    <div class="buttonee">
+        <button onclick="startAI()">Play with AI</button>
+        <p>OR</p>
+    </div>
+
     <div class="buttone">
         <button onclick="start()">Start</button>
         <p>(enter player names below)</p>
         <br>
-        <p>OR</p>
-    </div>
-
-
-    <div class="buttonee">
-        <button onclick="startAI()">Play with AI</button>
-    
+     
     </div>
 
     <div class="controls" ng-app="">

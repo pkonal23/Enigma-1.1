@@ -19,8 +19,8 @@ body {
     transform: translate(-50%, -50%);
     font-size: 24px;
     font-weight: bold;
-    color: white;
-    background: rgba(0, 0, 0, 0.8);
+    color: rgb(0, 0, 0);
+    background: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 10px;
 }
@@ -133,7 +133,6 @@ body {
 
 .buttone p {
     display: flex;
-   
     font-family: "Jolly Lodger";
     font-size: 25px;
     font-style: normal;
@@ -144,6 +143,33 @@ body {
     cursor: pointer;
     color: white;
 }
+
+.buttonee p {
+    display: flex;
+    font-family: "Jolly Lodger";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 100;
+    margin: 0% auto;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+}
+#highScoresHeader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.highscores img{
+    margin-top:2%;
+    margin-left: 2%;
+    height: 2vh;
+    filter: brightness(0) saturate(100%) invert(96%) sepia(99%) saturate(0%) hue-rotate(227deg) brightness(108%) contrast(100%);
+}
+
+
 
 .iconse {
     align-items: center;
@@ -303,6 +329,3 @@ button {
     font-size: 2rem;
 }
 
-#highScoresHeader {
-    cursor: pointer;
-}

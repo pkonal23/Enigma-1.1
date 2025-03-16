@@ -2,10 +2,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-      // Detect if the user is on a phone or tablet
+    // Detect if the user is on a phone or tablet
     function isMobileOrTablet() {
-        return /Mobi|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent) || 
-               (window.matchMedia && window.matchMedia("(max-width: 1024px)").matches);
+        return /Mobi|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent) ||
+            (window.matchMedia && window.matchMedia("(max-width: 1024px)").matches);
     }
 
     if (isMobileOrTablet()) {
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    
+
     const highScoresHeader = document.getElementById('highScoresHeader');
     const highScoresList = document.getElementById('highscoresList');
 
@@ -48,11 +48,11 @@ function start() {
 
         document.body.innerHTML += `<div id="loading" class="loading">Starting Game...</div>`;
 
-        setTimeout(() => { 
+        setTimeout(() => {
             window.location.href = 'playing.html';
         }, 3500);
 
-        
+
 
     }
 
@@ -61,28 +61,41 @@ function start() {
 }
 
 function startAI() {
-    let name1 = 'AI';
-    let name2 = 'You';
+    const aiNames = ["Neo", "Titan", "Eclipse", "Zenith", "Quantum", "Nimbus", "Spectre", "Aegis", "Orion", "Echo"];
+    let name1Input = document.getElementById('name2');
+    let name2Input = document.getElementById('name1');
+
+    // Only generate AI name if name1 is empty
+    if (!name1Input.value.trim()) {
+        name1Input.value = aiNames[Math.floor(Math.random() * aiNames.length)];
+        document.getElementById('playername1').innerText = name1Input.value;
+    }
+
+
+    let name2 = name1Input.value;
+    let name1 = name2Input.value.trim();
 
     localStorage.setItem('name1', name1);
     localStorage.setItem('name2', name2);
 
-    if (!name1 || !name2) {
-        document.querySelector('.entername').innerHTML = "<p class='entername'>!Enter names to start</p>";
-        name1 = 'AI';
-        name2 = 'You';
-    } else {
-        // Show loading animation
-        document.body.innerHTML += `<div id="loading" class="loading">Starting Game...</div>`;
-
-        setTimeout(() => {
-            window.location.href = 'playingAI.html';
-        }, 3500);
+    if (!name1) {
+        document.querySelector('.entername').innerHTML = "<p class='entername'>!Enter your name to start</p>";
+        name2Input.placeholder = 'Enter your name';
+        return;
     }
 
-    document.getElementById('playername1').innerText = name1;
-    document.getElementById('playername2').innerText = name2;
+    // Show loading animation
+    document.body.innerHTML += `<div id="loading" class="loading">Starting Game...</div>`;
+
+    setTimeout(() => {
+        window.location.href = 'playingAI.html';
+    }, 3500);
+
+    document.getElementById('playername1').innerText = name2;
+    document.getElementById('playername2').innerText = name1;
 }
+
+
 
 
 
