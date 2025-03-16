@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (isMobileOrTablet()) {
-        window.location.href = 'sorryDevice.html';
+        window.location.href = '/Frontend/sorryDevice.html';
         return;
     }
 
@@ -50,7 +50,7 @@ function start() {
         updateMessage();
 
         setTimeout(() => {
-            window.location.href = 'playing.html';
+            window.location.href = '/Frontend/playing.html';
         }, 4000);
 
 
@@ -107,7 +107,7 @@ function startAI() {
     updateMessage();
 
     setTimeout(() => {
-        window.location.href = 'playingAI.html';
+        window.location.href = '/Frontend/playingAI.html';
     }, 4000);
 
 

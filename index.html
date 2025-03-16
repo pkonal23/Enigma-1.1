@@ -8,9 +8,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enigma</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/Frontend/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <link rel="icon" type="image/x-icon" href="/Media/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="Media/favicon.ico">
     <script>
         let enterEnabled = false; // Flag to check if Enter should be enabled
     
@@ -34,7 +34,7 @@
         <div class="highscoresouter">
 
             <h1 id="highScoresHeader">Winners & HighScores 
-                <img src="../Media/dropdown.png"></img>
+                <img src="Media/dropdown.png"></img>
             </h1>
         </div>
             
@@ -123,18 +123,18 @@
 
     </div>
 
-    <audio id="backgroundMusic" src="../Media/gsame.mp3" loop></audio>
+    <audio id="backgroundMusic" src="Media/gsame.mp3" loop></audio>
 
     <div class="popup">
         <div class="popupouter">
             <button id="closepopup" onclick="openinstruc()">Close</button>
             <h1>INSTRUCTIONS</h1>
-            <img src="../Media/instructions.png" />
+            <img src="Media/instructions.png" />
         </div>
     </div>
     </div>
     <div class="headinge">
-        <img src="../Media/Enigma.png"></img>
+        <img src="Media/Enigma.png"></img>
     </div>
 
     
@@ -152,7 +152,7 @@
 
     <div class="controls" ng-app="">
         <div>
-            <img src="../Media/wasd.png">
+            <img src="Media/wasd.png">
             <p id="playername1" ng-bind="name1 || 'Player 1'">Player 1</p>
 
         </div>
@@ -169,14 +169,14 @@
             <p class="entername"></p>
         </div>
         <div>
-            <img src="../Media/arrow.png">
+            <img src="Media/arrow.png">
             <p id="playername2" ng-bind="name2 || 'Player 2'">Player 2</p>
         </div>
     </div>
 
 
 
-    <script src="./index.js"></script>
+    <script src="/Frontend/index.js"></script>
 </body>
 </html>
 

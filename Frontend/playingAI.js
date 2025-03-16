@@ -3,7 +3,7 @@ function ree() {
     window.location.href = 'playingAI.html';
 }
 function reehome() {
-    window.location.href = 'index.html';
+    window.location.href = '/index.html';
 }
 
 var name2 = localStorage.getItem('name2').toUpperCase();

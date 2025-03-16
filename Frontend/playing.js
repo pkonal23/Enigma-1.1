@@ -2,7 +2,7 @@ function ree() {
     window.location.href = 'index.html';
 }
 function reehome() {
-    window.location.href = 'index.html';
+    window.location.href = '/index.html';
 }
 
 var name1 = localStorage.getItem('name1').toUpperCase();
