@@ -8,8 +8,8 @@ function reehome() {
 var name1 = localStorage.getItem('name1').toUpperCase();
 var name2 = localStorage.getItem('name2').toUpperCase();
 
-document.getElementById('p2point').textContent = (name2 ? name2 + ': 0 points' : 'Player 2: 0 points');
-document.getElementById('p1point').textContent = (name1 ? name1 + ': 0 points' : 'Player 1: 0 points');
+document.getElementById('p2point').textContent = (name2 ? name2 + ': 100 points' : 'Player 2: 100 points');
+document.getElementById('p1point').textContent = (name1 ? name1 + ': 100 points' : 'Player 1: 100 points');
 
 
 function startGame() {
@@ -178,7 +178,7 @@ function initializeGame() {
 
 
     // Initialize time left
-    timeLeft = 40000; // 3 minutes in milliseconds
+    timeLeft = 55000; // 3 minutes in milliseconds
 }
 
 const image = new Image();
