@@ -14,7 +14,7 @@ app.use(express.json());
 const dbPassword = encodeURIComponent(process.env.MONGO_PASSWORD);
 const dbURI = `mongodb+srv://${process.env.MONGO_USER}:${dbPassword}@${process.env.MONGO_CLUSTER}/${process.env.MONGO_DB}?${process.env.MONGO_OPTIONS}`;
 
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(dbURI)
     .then(() => console.log('Connected to MongoDB Atlas'))
     .catch(err => console.error('Error connecting to MongoDB Atlas:', err));
 

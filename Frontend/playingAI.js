@@ -1,3 +1,4 @@
+const ipAddress = CONFIG.PUBLIC_IP;
 let hasReachedExit = false; // Flag to track if the AI has reached the maze exit
 function ree() {
     window.location.href = 'playingAI.html';
@@ -490,7 +491,7 @@ function saveWinnerToDatabase(winnerName, winnerScore) {
         score: winnerScore
     };
 
-    fetch('http://localhost:3000/saveWinner', {
+    fetch(`http://${ipAddress}:3000/saveWinner`, {
         method: 'POST', // Ensure this is a POST request
         headers: {
             'Content-Type': 'application/json'

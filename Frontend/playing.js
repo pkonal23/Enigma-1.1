@@ -1,3 +1,4 @@
+const ipAddress = CONFIG.PUBLIC_IP;
 function ree() {
     window.location.href = 'index.html';
 }
@@ -457,7 +458,7 @@ function saveWinnerToDatabase(winnerName, winnerScore) {
         score: winnerScore
     };
 
-    fetch('http://localhost:3000/saveWinner', {
+    fetch(`http://${ipAddress}:3000/saveWinner`, {
         method: 'POST', // Ensure this is a POST request
         headers: {
             'Content-Type': 'application/json'

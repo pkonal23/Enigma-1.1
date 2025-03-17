@@ -1,3 +1,5 @@
+const ipAddress = CONFIG.PUBLIC_IP;
+
 document.addEventListener('DOMContentLoaded', function () {
 
 
@@ -153,7 +155,7 @@ function openinstruc() {
 document.addEventListener('DOMContentLoaded', async function () {
     try {
         // Make a GET request to fetch the high scores from the server
-        const response = await fetch('http://localhost:3000/winners');
+        const response = await fetch(`http://${ipAddress}:3000/winners`);
 
         // Check if the response is successful (status code 200)
         if (response.ok) {
