@@ -1,3 +1,4 @@
+import CONFIG from './config.js';
 const ipAddress = CONFIG.PUBLIC_IP;
 
 document.addEventListener('DOMContentLoaded', function () {

@@ -1,3 +1,4 @@
+import CONFIG from './config.js';
 const ipAddress = CONFIG.PUBLIC_IP;
 let hasReachedExit = false; // Flag to track if the AI has reached the maze exit
 function ree() {
