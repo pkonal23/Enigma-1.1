@@ -15,6 +15,7 @@ sudo yum install -y mongodb-org
 sudo systemctl start mongod
 sudo systemctl enable mongod
 aws ssm get-parameters --names "MONGO_CLUSTER" "MONGO_DB" "MONGO_OPTIONS" "MONGO_PASSWORD" "MONGO_USER" "PORT" --with-decryption --query "Parameters[*].{Name:Name,Value:Value}" --output text > .env
+sudo echo "CONFIG = { PUBLIC_IP: '$(curl -s ifconfig.me)' };" > config.js
 sudo yum install -y nodejs
 sudo npm install -g pm2
 sudo pm2 start index.js
