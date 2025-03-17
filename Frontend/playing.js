@@ -1,4 +1,4 @@
-import CONFIG from './config.js';
+
 const ipAddress = CONFIG.PUBLIC_IP;
 function ree() {
     window.location.href = 'index.html';
