@@ -16,14 +16,14 @@ app.use(express.json());
 
 // MongoDB connection
 const dbPassword = encodeURIComponent(process.env.MONGO_PASSWORD);
-const dbURI = `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/?${process.env.MONGO_OPTIONS}`;
+const mongoURI = process.env.MONGO_URL;
 
-mongoose.connect(dbURI, {
+mongoose.connect(mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
-    .then(() => console.log('Connected to MongoDB Atlas'))
-    .catch(err => console.error('Error connecting to MongoDB Atlas:', err));
+    .then(() => console.log('Connected to MongoDB '))
+    .catch(err => console.error('Error connecting to MongoDB:', err));
 
 // Define a schema and model for the winner
 const winnerSchema = new mongoose.Schema({
