@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000; // Use port from .env
 
 // Middleware
 app.use(cors({
-    origin: 'http://127.0.0.1:5500', // Allow requests from this origin
+    origin: "*", // Allow requests from this origin
     methods: ['GET', 'POST'], // Allow specific HTTP methods
     credentials: true // Allow cookies and credentials
 }));
@@ -65,13 +65,11 @@ app.get('/winners', async (req, res) => {
 
 // Handle preflight requests
 app.options('/saveWinner', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:5500');
+    res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET, POST');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     res.send();
 });
 
 // Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+app.listen(PORT);

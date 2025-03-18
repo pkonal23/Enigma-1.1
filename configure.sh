@@ -16,7 +16,7 @@ gpgkey=https://pgp.mongodb.com/server-8.0.asc" | sudo tee $REPO_FILE > /dev/null
 sudo yum install -y mongodb-org
 sudo systemctl start mongod
 sudo systemctl enable mongod
-aws ssm get-parameters --names "MONGO_CLUSTER" "MONGO_DB" "MONGO_OPTIONS" "MONGO_PASSWORD" "MONGO_USER" "PORT" --with-decryption --query "Parameters[*].{Name:Name,Value:Value}" --output text > .env
+aws ssm get-parameters --names "MONGO_CLUSTER" "MONGO_DB" "MONGO_OPTIONS" "MONGO_PASSWORD" "MONGO_USER" "PORT" --with-decryption --query "Parameters[*].[Name,Value]" --output text | awk '{print $1 "=" $2}' > .env
 sudo yum install -y nodejs
 sudo npm install -g pm2
 sudo pm2 start index.js
