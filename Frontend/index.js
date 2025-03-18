@@ -148,7 +148,7 @@ function openinstruc() {
         popit.style.display = 'block';
     }
 }
-document.addEventListener('DOMContentLoaded', async function () {
+document.addEventListener('scriptsLoaded', async function () {
     try {
         // Make a GET request to fetch the high scores from the server
         const response = await fetch(`http://${ipAddress}:3000/winners`);
