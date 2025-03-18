@@ -85,6 +85,10 @@
         // Load config.js first, then index.js
         loadScript('./config.js')
             .then(() => loadScript('./playingAI.js'))
+            .then(() => {
+            // Dispatch a custom event after scripts are loaded
+            document.dispatchEvent(new Event('scriptsLoaded'));
+        })
             .catch(error => console.error('Error loading scripts:', error));
     </script>
 

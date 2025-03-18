@@ -2,32 +2,30 @@
 const ipAddress = (typeof CONFIG !== 'undefined' && CONFIG.PUBLIC_IP) ? CONFIG.PUBLIC_IP : 'default.ip.address';
 
 document.addEventListener('scriptsLoaded', function () {
-    // Detect if the user is on a phone or tablet
     function isMobileOrTablet() {
         return /Mobi|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent) ||
             (window.matchMedia && window.matchMedia("(max-width: 1024px)").matches);
     }
 
     if (isMobileOrTablet()) {
-        window.location.href = '/Frontend/sorryDevice.html';
-        return;
+        // Check if the user has already been redirected in this session
+        if (!sessionStorage.getItem('redirected')) {
+            sessionStorage.setItem('redirected', 'true');
+            window.location.href = '/Frontend/sorryDevice.html';
+        }
+        return; // Prevent further script execution
     }
 
     const highScoresHeader = document.getElementById('highScoresHeader');
     const highScoresList = document.getElementById('highscoresList');
 
-    // Initially hide the high scores list
     highScoresList.style.display = 'none';
 
-    // Toggle the visibility of the high scores list when the header is clicked
     highScoresHeader.addEventListener('click', function () {
-        if (highScoresList.style.display === 'none') {
-            highScoresList.style.display = 'block';
-        } else {
-            highScoresList.style.display = 'none';
-        }
+        highScoresList.style.display = highScoresList.style.display === 'none' ? 'block' : 'none';
     });
 });
+
 
 
 function start() {
