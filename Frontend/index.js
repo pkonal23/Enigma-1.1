@@ -1,10 +1,7 @@
 
-const ipAddress = CONFIG.PUBLIC_IP;
+const ipAddress = (typeof CONFIG !== 'undefined' && CONFIG.PUBLIC_IP) ? CONFIG.PUBLIC_IP : 'default.ip.address';
 
-document.addEventListener('DOMContentLoaded', function () {
-
-
-
+document.addEventListener('scriptsLoaded', function () {
     // Detect if the user is on a phone or tablet
     function isMobileOrTablet() {
         return /Mobi|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent) ||
@@ -15,8 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = '/Frontend/sorryDevice.html';
         return;
     }
-
-
 
     const highScoresHeader = document.getElementById('highScoresHeader');
     const highScoresList = document.getElementById('highscoresList');

@@ -1,4 +1,4 @@
-require('dotenv').config(); 
+require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -7,7 +7,11 @@ const app = express();
 const PORT = process.env.PORT || 3000; // Use port from .env
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: 'http://127.0.0.1:5500', // Allow requests from this origin
+    methods: ['GET', 'POST'], // Allow specific HTTP methods
+    credentials: true // Allow cookies and credentials
+}));
 app.use(express.json());
 
 // MongoDB connection
@@ -16,7 +20,8 @@ const dbURI = `mongodb+srv://${process.env.MONGO_USER}:${dbPassword}@${process.e
 
 mongoose.connect(dbURI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,})
+    useUnifiedTopology: true,
+})
     .then(() => console.log('Connected to MongoDB Atlas'))
     .catch(err => console.error('Error connecting to MongoDB Atlas:', err));
 
@@ -56,6 +61,14 @@ app.get('/winners', async (req, res) => {
         console.error('Error fetching winners:', error);
         res.status(500).send('Error fetching winners');
     }
+});
+
+// Handle preflight requests
+app.options('/saveWinner', (req, res) => {
+    res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:5500');
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.send();
 });
 
 // Start the server
