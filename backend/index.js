@@ -5,10 +5,10 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000; // Use port from .env
-const ipAddress = require('../Frontend/config.js');
+
 // Middleware
 app.use(cors({
-    origin: `http://${ipAddress}`, // Allow requests from this origin
+    origin: "*", // Allow requests from this origin
     methods: ['GET', 'POST'], // Allow specific HTTP methods
     credentials: true // Allow cookies and credentials
 }));
@@ -65,7 +65,7 @@ app.get('/winners', async (req, res) => {
 
 // Handle preflight requests
 app.options('/saveWinner', (req, res) => {
-    res.header('Access-Control-Allow-Origin', `http://${ipAddress}`);
+    res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET, POST');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     res.send();
