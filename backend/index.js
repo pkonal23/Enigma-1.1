@@ -16,7 +16,7 @@ app.use(express.json());
 
 // MongoDB connection
 const dbPassword = encodeURIComponent(process.env.MONGO_PASSWORD);
-const dbURI = `mongodb+srv://${process.env.MONGO_USER}:${dbPassword}@${process.env.MONGO_CLUSTER}/${process.env.MONGO_DB}?${process.env.MONGO_OPTIONS}`;
+const dbURI = `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/?${process.env.MONGO_OPTIONS}`;
 
 mongoose.connect(dbURI, {
     useNewUrlParser: true,
