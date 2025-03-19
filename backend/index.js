@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config(); // Load environment variables from .env file
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -14,16 +14,15 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// MongoDB connection
-const dbPassword = encodeURIComponent(process.env.MONGO_PASSWORD);
-const dbURI = `mongodb+srv://${process.env.MONGO_USER}:${dbPassword}@${process.env.MONGO_CLUSTER}/${process.env.MONGO_DB}?${process.env.MONGO_OPTIONS}`;
+// MongoDB connection setup using the MONGO_URL environment variable
+const mongoURI = process.env.MONGO_URL;
 
-mongoose.connect(dbURI, {
+mongoose.connect(mongoURI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useUnifiedTopology: true
 })
-    .then(() => console.log('Connected to MongoDB Atlas'))
-    .catch(err => console.error('Error connecting to MongoDB Atlas:', err));
+.then(() => console.log('MongoDB connected'))
+.catch((error) => console.error('Error connecting to MongoDB:', error));
 
 // Define a schema and model for the winner
 const winnerSchema = new mongoose.Schema({
@@ -72,4 +71,6 @@ app.options('/saveWinner', (req, res) => {
 });
 
 // Start the server
-app.listen(PORT);
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});

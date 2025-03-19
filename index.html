@@ -17,6 +17,11 @@
         function enableEnter() {
             startAI(); // Call the function when the button is clicked
             enterEnabled = true; // Enable Enter key functionality after clicking once
+            document.getElementById("startbutton").disabled = true; 
+            document.getElementById("startbutton").style.opacity = "0.5";
+            document.getElementById("name2").disabled = true;
+            name2
+
             console.log("Enabled!");
         }
     
@@ -145,7 +150,7 @@
     </div>
 
     <div class="buttone">
-        <button onclick="start()">Start</button>
+        <button id="startbutton" onclick="start()">Start</button>
         <p>(enter player names below)</p>
         <br>
     </div>
